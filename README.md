@@ -26,6 +26,21 @@ Git workflow helper prompts with confidence-scored code review and test coverage
 
 - `ab_XYZ-1234_fixSomething` -> `[XYZ-1234] fix something`
 
+### setup
+
+Project initialization and steering file management with automatic project analysis.
+
+| Prompt          | Description                                                     |
+| --------------- | --------------------------------------------------------------- |
+| `steer-init`    | Analyze project and generate essential steering files           |
+| `steer-analyze` | Generate project-specific steering files from codebase patterns |
+
+**Workflow:**
+
+```
+@steer-init --> @steer-analyze --> Review/Customize --> @spec-init --> Development
+```
+
 ### spec-driven
 
 Specification-driven development workflow with brownfield support.
@@ -58,14 +73,18 @@ Copy prompts to your global Kiro directory:
 mkdir -p ~/.kiro/prompts ~/.kiro/steering
 
 # Copy git-helpers prompts
-cp kiro-extras/git-helpers/prompts/*.md ~/.kiro/prompts/
+cp git-helpers/prompts/*.md ~/.kiro/prompts/
 
 # Copy spec-driven prompts
-cp kiro-extras/spec-driven/prompts/*.md ~/.kiro/prompts/
+cp spec-driven/prompts/*.md ~/.kiro/prompts/
+
+# Copy steering prompts
+cp setup/prompts/*.md ~/.kiro/prompts/
 
 # Copy steering files (recommended for centralized docs)
-cp kiro-extras/git-helpers/steering/*.md ~/.kiro/steering/
-cp kiro-extras/spec-driven/steering/*.md ~/.kiro/steering/
+cp git-helpers/steering/*.md ~/.kiro/steering/
+cp spec-driven/steering/*.md ~/.kiro/steering/
+cp setup/steering/*.md ~/.kiro/steering/
 ```
 
 ### Option 2: Project-Level Installation
@@ -82,9 +101,13 @@ cp /path/to/kiro-extras/git-helpers/prompts/*.md .kiro/prompts/
 # Copy spec-driven prompts
 cp /path/to/kiro-extras/spec-driven/prompts/*.md .kiro/prompts/
 
+# Copy steering prompts
+cp /path/to/kiro-extras/setup/prompts/*.md .kiro/prompts/
+
 # Copy steering files
 cp /path/to/kiro-extras/git-helpers/steering/*.md .kiro/steering/
 cp /path/to/kiro-extras/spec-driven/steering/*.md .kiro/steering/
+cp /path/to/kiro-extras/setup/steering/*.md .kiro/steering/
 
 # Copy MCP config (for spec-driven with Serena)
 cp /path/to/kiro-extras/spec-driven/settings/mcp.json .kiro/settings/
@@ -184,8 +207,16 @@ kiro-extras/
       git-commit.md
       git-review.md
       git-summary.md
+      git-hotfix.md
+      git-cleanup.md
     steering/
       git-helpers.md
+  setup/
+    prompts/
+      steer-init.md
+      steer-analyze.md
+    steering/
+      setup.md
   spec-driven/
     prompts/
       spec-init.md
