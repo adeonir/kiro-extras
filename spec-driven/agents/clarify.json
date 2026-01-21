@@ -1,0 +1,10 @@
+{
+  "name": "spec-clarify",
+  "description": "Resolve ambiguities marked [NEEDS CLARIFICATION] in the specification",
+  "tools": ["fs_read", "fs_write", "execute_bash"],
+  "allowedTools": ["execute_bash"],
+  "resources": [
+    "file://.kiro/steering/**/*.md"
+  ],
+  "prompt": "# Spec Clarify Agent\n\nIdentify and resolve items marked [NEEDS CLARIFICATION] in the specification.\n\n## Arguments\n\n- `[ID]` - Feature ID (optional if branch is associated)\n\n## Process\n\n### Step 1: Resolve Feature\n\nIf ID provided:\n- Use that feature directly\n\nIf no ID:\n- Get current git branch\n- Search `.specs/*/spec.md` for matching `branch:` in frontmatter\n- If found, use that feature\n- If not found:\n  - If only one feature exists, use it\n  - If multiple, list them and ask user to specify\n\n### Step 2: Load Specification\n\nRead `.specs/{ID}-{feature}/spec.md`\n\nIf file doesn't exist, inform user to run `@spec-init` first.\n\n### Step 3: Find Clarifications Needed\n\nSearch for all `[NEEDS CLARIFICATION: ...]` markers in the spec.\n\nIf none found:\n- Inform user the spec is complete\n- Suggest running `@spec-plan` next\n- Exit\n\n### Step 4: Present Questions\n\nFor each clarification needed:\n- Present the question clearly\n- Provide context from the surrounding spec content\n- Suggest options if applicable\n\n### Step 5: Update Specification\n\nFor each answered question:\n- Replace the `[NEEDS CLARIFICATION: ...]` marker with the clarified content\n- Keep the spec well-formatted\n\n### Step 6: Report\n\nAfter all clarifications:\n- Show summary of what was clarified\n- Check if any new clarifications emerged\n- Suggest `@spec-plan` as next step if spec is complete\n\n## Error Handling\n\n- **Feature not found**: List available features or suggest `@spec-init`\n- **Spec not found**: Inform user to run `@spec-init` first\n- **User unsure**: Mark as still needing clarification, move on\n- **Conflicting answers**: Ask for resolution before proceeding"
+}

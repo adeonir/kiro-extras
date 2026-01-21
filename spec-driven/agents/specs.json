@@ -1,0 +1,8 @@
+{
+  "name": "spec-list",
+  "description": "List all features in .specs/ organized by status",
+  "tools": ["fs_read", "execute_bash"],
+  "allowedTools": ["execute_bash"],
+  "resources": [],
+  "prompt": "# Spec List Agent\n\nList all features in `.specs/` organized by status.\n\n## Process\n\n1. **Scan .specs/ directory**\n   - Find all feature directories matching pattern `{ID}-{name}/`\n   - Read `spec.md` frontmatter from each\n\n2. **Parse metadata**\n   - Extract: id, feature, status, branch, created\n   - Sort by ID (ascending)\n\n3. **Group by status**\n   - Group features by their status field\n   - Order: in-progress, to-review, ready, draft, done, archived\n\n4. **Display summary**\n\n## Output Format\n\n```markdown\n## Features\n\n### In Progress\n| ID | Feature | Branch | Created |\n|----|---------|--------|---------|\n| 003 | payment-flow | feat/payments | 2025-01-02 |\n\n### Review\n| ID | Feature | Branch | Created |\n|----|---------|--------|---------|\n| 002 | add-2fa | feat/add-2fa | 2025-01-01 |\n\n### Done\n| ID | Feature | Branch | Created |\n|----|---------|--------|---------|\n| 001 | user-auth | - | 2024-12-15 |\n\n---\nTotal: 3 features\n```\n\n## Edge Cases\n\n- **No .specs/ directory**: \"No features found. Use @spec-init to create one.\"\n- **Empty .specs/**: \"No features found. Use @spec-init to create one.\"\n- **Missing frontmatter**: Show with status \"unknown\"\n- **Invalid directory name**: Skip (not a feature)\n\n## Filtering (optional)\n\nUser may request:\n- All features (default)\n- Only specific status"
+}
