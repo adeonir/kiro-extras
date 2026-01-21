@@ -15,6 +15,8 @@ Git workflow helper agents for Kiro CLI.
 | `@git-commit` | Create commit with ticket ID from branch name |
 | `@git-review` | Review changes with confidence scoring + test coverage |
 | `@git-summary` | Generate MR description to file |
+| `@git-hotfix` | Create emergency hotfix using git worktree |
+| `@git-cleanup` | Clean up merged branches and stale references |
 
 ### @git-commit
 
@@ -81,6 +83,38 @@ Extra context when needed
 | Before | After |
 |--------|-------|
 ```
+
+### @git-hotfix
+
+Create emergency hotfix using git worktree for isolated development.
+
+```
+@git-hotfix "fix critical bug"     # Create hotfix from main
+@git-hotfix "urgent fix" --from develop  # Create from specific branch
+```
+
+**Process:**
+1. Creates worktree in `../hotfix-{timestamp}`
+2. Creates hotfix branch: `hotfix/{description}`
+3. Preserves current work in main directory
+4. Provides cleanup instructions after merge
+
+### @git-cleanup
+
+Clean up merged branches and stale references.
+
+```
+@git-cleanup              # Interactive cleanup
+@git-cleanup --dry-run    # Show what would be deleted
+@git-cleanup --force      # Skip confirmations
+@git-cleanup --remote     # Also clean remote tracking branches
+```
+
+**Safety features:**
+- Only deletes fully merged branches
+- Protects main, master, develop, current branch
+- Shows detailed summary before deletion
+- Handles network issues gracefully
 
 ## Confidence Scoring
 

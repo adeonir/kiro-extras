@@ -13,6 +13,8 @@ Git workflow helper prompts with confidence-scored code review and test coverage
 | `git-commit`  | Create commits with ticket ID from branch name         |
 | `git-review`  | Review changes with confidence scoring + test coverage |
 | `git-summary` | Generate MR description to file                        |
+| `git-hotfix`  | Create emergency hotfix using git worktree             |
+| `git-cleanup` | Clean up merged branches and stale references          |
 
 **Workflow:**
 
@@ -114,6 +116,13 @@ After installation, use prompts directly in Kiro:
 @git-review --save       # Save to CODE_REVIEW.md
 
 @git-summary             # Generate MR_DETAILS.md
+
+@git-hotfix "fix critical bug"     # Create emergency hotfix with worktree
+@git-hotfix "urgent fix" --from develop  # Create from specific branch
+
+@git-cleanup             # Clean up merged branches interactively
+@git-cleanup --dry-run   # Show what would be deleted
+@git-cleanup --force     # Skip confirmations
 ```
 
 ### spec-driven
