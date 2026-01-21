@@ -28,41 +28,40 @@ Git workflow helper agents with confidence-scored code review and test coverage 
 
 Specification-driven development workflow with brownfield support.
 
-| Agent             | Description                                               |
-| ----------------- | --------------------------------------------------------- |
-| `@spec-init`      | Create specification (auto-detects greenfield/brownfield) |
-| `@spec-clarify`   | Resolve ambiguities marked [NEEDS CLARIFICATION]          |
-| `@spec-plan`      | Research, explore codebase, generate technical plan       |
-| `@spec-tasks`     | Generate task list from plan                              |
-| `@spec-implement` | Execute tasks (T001, T001-T005, --all)                    |
-| `@spec-validate`  | Validate artifacts at any phase                           |
-| `@spec-archive`   | Generate documentation and mark as archived               |
-| `@spec-list`      | List all features by status                               |
+| Prompt           | Description                                               |
+| ---------------- | --------------------------------------------------------- |
+| `spec-init`      | Create specification (auto-detects greenfield/brownfield) |
+| `spec-clarify`   | Resolve ambiguities marked [NEEDS CLARIFICATION]          |
+| `spec-plan`      | Research, explore codebase, generate technical plan       |
+| `spec-tasks`     | Generate task list from plan                              |
+| `spec-implement` | Execute tasks (T001, T001-T005, --all)                    |
+| `spec-validate`  | Validate artifacts at any phase                           |
+| `spec-archive`   | Generate documentation and mark as archived               |
+| `spec-list`      | List all features by status                               |
 
 **Workflow:**
 
 ```
-@spec-init --> @spec-clarify --> @spec-plan --> @spec-tasks --> @spec-implement --> @spec-validate --> @spec-archive
+spec-init --> spec-clarify --> spec-plan --> spec-tasks --> spec-implement --> spec-validate --> spec-archive
 ```
 
 ## Installation
 
 ### Option 1: Global Installation (All Projects)
 
-Copy agents to your global Kiro agents directory:
+Copy prompts to your global Kiro directory:
 
 ```bash
-# Create directory if it doesn't exist
-mkdir -p ~/.kiro/agents
+# Create directories if they don't exist
+mkdir -p ~/.kiro/prompts ~/.kiro/steering
 
-# Copy git-helpers agents
-cp kiro-extras/git-helpers/agents/*.json ~/.kiro/agents/
+# Copy git-helpers prompts
+cp kiro-extras/git-helpers/prompts/*.md ~/.kiro/prompts/
 
-# Copy spec-driven agents
-cp kiro-extras/spec-driven/agents/*.json ~/.kiro/agents/
+# Copy spec-driven prompts
+cp kiro-extras/spec-driven/prompts/*.md ~/.kiro/prompts/
 
-# Copy steering files (optional but recommended)
-mkdir -p ~/.kiro/steering
+# Copy steering files (recommended for centralized docs)
 cp kiro-extras/git-helpers/steering/*.md ~/.kiro/steering/
 cp kiro-extras/spec-driven/steering/*.md ~/.kiro/steering/
 ```
@@ -73,11 +72,13 @@ Copy to your project's `.kiro` directory:
 
 ```bash
 # In your project root
-mkdir -p .kiro/agents .kiro/steering .kiro/settings
+mkdir -p .kiro/prompts .kiro/agents .kiro/steering .kiro/settings
 
-# Copy agents
-cp /path/to/kiro-extras/git-helpers/agents/*.json .kiro/agents/
-cp /path/to/kiro-extras/spec-driven/agents/*.json .kiro/agents/
+# Copy git-helpers prompts
+cp /path/to/kiro-extras/git-helpers/prompts/*.md .kiro/prompts/
+
+# Copy spec-driven prompts
+cp /path/to/kiro-extras/spec-driven/prompts/*.md .kiro/prompts/
 
 # Copy steering files
 cp /path/to/kiro-extras/git-helpers/steering/*.md .kiro/steering/
@@ -100,24 +101,43 @@ No external dependencies.
 
 ## Usage
 
-After installation, use agents with the `@` prefix in Kiro:
+After installation, use agents with the `@` prefix and prompts directly in Kiro:
 
-```
+### git-helpers
+
+```bash
 @git-commit              # Create commit with ticket from branch name
 @git-commit -s           # Commit only staged files
 
-@git-review         # Review changes + test coverage in terminal
-@git-review main    # Compare against main branch
-@git-review --save  # Save to CODE_REVIEW.md
+@git-review              # Review changes + test coverage in terminal
+@git-review main         # Compare against main branch
+@git-review --save       # Save to CODE_REVIEW.md
 
 @git-summary             # Generate MR_DETAILS.md
+```
 
-@spec-init add user authentication
-@spec-plan
-@spec-tasks
-@spec-implement
-@spec-validate
-@spec-archive
+### spec-driven
+
+**Prompts** (all operations):
+
+```bash
+spec-init add user authentication   # Create specification
+spec-clarify                        # Resolve [NEEDS CLARIFICATION] items
+spec-plan                           # Generate technical plan
+spec-tasks                          # Generate task list
+spec-implement                      # Execute next pending task
+spec-implement T001                 # Execute single task
+spec-implement T001-T005            # Execute task range
+spec-implement --all                # Execute all tasks
+spec-validate                       # Validate implementation
+spec-archive                        # Generate docs and mark as archived
+spec-list                           # List all features by status
+```
+
+**Workflow:**
+
+```
+spec-init --> spec-clarify --> spec-plan --> spec-tasks --> spec-implement --> spec-validate --> spec-archive
 ```
 
 ## MCP Server Configuration
@@ -151,22 +171,22 @@ For global installation, add to `~/.kiro/settings/mcp.json`:
 ```
 kiro-extras/
   git-helpers/
-    agents/
-      commit.json
-      review.json
-      summary.json
+    prompts/
+      git-commit.md
+      git-review.md
+      git-summary.md
     steering/
       git-helpers.md
   spec-driven/
-    agents/
-      init.json
-      clarify.json
-      plan.json
-      tasks.json
-      implement.json
-      validate.json
-      archive.json
-      specs.json
+    prompts/
+      spec-init.md
+      spec-clarify.md
+      spec-plan.md
+      spec-tasks.md
+      spec-implement.md
+      spec-validate.md
+      spec-archive.md
+      spec-list.md
     steering/
       spec-driven.md
     settings/
