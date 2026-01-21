@@ -1,23 +1,23 @@
 # kiro-extras
 
-Custom agents for Kiro CLI migrated from Claude Code plugins.
+Custom prompts for Kiro CLI migrated from Claude Code plugins.
 
-## Available Agents
+## Available Prompts
 
 ### git-helpers
 
-Git workflow helper agents with confidence-scored code review and test coverage analysis.
+Git workflow helper prompts with confidence-scored code review and test coverage analysis.
 
-| Agent          | Description                                            |
+| Prompt         | Description                                            |
 | -------------- | ------------------------------------------------------ |
-| `@git-commit`  | Create commits with ticket ID from branch name         |
-| `@git-review`  | Review changes with confidence scoring + test coverage |
-| `@git-summary` | Generate MR description to file                        |
+| `git-commit`   | Create commits with ticket ID from branch name         |
+| `git-review`   | Review changes with confidence scoring + test coverage |
+| `git-summary`  | Generate MR description to file                        |
 
 **Workflow:**
 
 ```
-@git-review --> @git-commit --> @git-summary
+git-review --> git-commit --> git-summary
 ```
 
 **Branch pattern for commits:** `{prefix}_{TICKET-ID}_{description}`
@@ -72,7 +72,7 @@ Copy to your project's `.kiro` directory:
 
 ```bash
 # In your project root
-mkdir -p .kiro/prompts .kiro/agents .kiro/steering .kiro/settings
+mkdir -p .kiro/prompts .kiro/steering .kiro/settings
 
 # Copy git-helpers prompts
 cp /path/to/kiro-extras/git-helpers/prompts/*.md .kiro/prompts/
@@ -101,19 +101,19 @@ No external dependencies.
 
 ## Usage
 
-After installation, use agents with the `@` prefix and prompts directly in Kiro:
+After installation, use prompts directly in Kiro:
 
 ### git-helpers
 
 ```bash
-@git-commit              # Create commit with ticket from branch name
-@git-commit -s           # Commit only staged files
+git-commit              # Create commit with ticket from branch name
+git-commit -s           # Commit only staged files
 
-@git-review              # Review changes + test coverage in terminal
-@git-review main         # Compare against main branch
-@git-review --save       # Save to CODE_REVIEW.md
+git-review              # Review changes + test coverage in terminal
+git-review main         # Compare against main branch
+git-review --save       # Save to CODE_REVIEW.md
 
-@git-summary             # Generate MR_DETAILS.md
+git-summary             # Generate MR_DETAILS.md
 ```
 
 ### spec-driven
