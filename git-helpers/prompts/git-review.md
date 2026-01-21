@@ -8,16 +8,13 @@ Review code changes with confidence-scored analysis for bugs, security, test cov
 
 - Focus EXCLUSIVELY on the diff (added, modified, deleted lines)
 - Do NOT report issues in unchanged code
-- Do NOT report issues in code that existed before this branch
 - Reading surrounding code is OK for CONTEXT, but issues must be in the DIFF
 - If a function was not modified, do not report issues in it
-- If a test file was not modified, do not report missing assertions in it
-
-This prevents false positives/negatives from pre-existing code.
 
 ## Arguments
 
 User may specify:
+
 - No argument: Review uncommitted changes, or branch diff if clean
 - `base-branch`: Compare against specified base branch
 - `--save`: Save review to CODE_REVIEW.md
@@ -34,54 +31,59 @@ User may specify:
    - If clean: compare current branch against base
 
 3. **Get the DIFF (this is your review scope)**:
-   - For uncommitted changes:
-     - `git diff` + `git diff --cached`
-   - For branch comparison:
-     - `git diff $BASE...HEAD`
-   
-   **The diff defines what you review. Nothing else.**
+   - For uncommitted changes: `git diff` + `git diff --cached`
+   - For branch comparison: `git diff $BASE...HEAD`
 
 4. **Code Review Analysis (ONLY on diff lines)**:
-   
-   **Priority Areas:**
-   | Priority | Category | What to Look For |
-   |----------|----------|------------------|
-   | 1 | Security | SQL injection, XSS, auth bypass, credential exposure |
-   | 2 | Bugs | Logic errors that WILL cause runtime failures |
-   | 3 | Data Loss | Operations that could corrupt or lose user data |
-   | 4 | Performance | Only severe: N+1 queries, unbounded loops, memory leaks |
 
-5. **Unit Test Analysis (ONLY for changed code)**:
-   
-   For each MODIFIED source file:
-   - Check if new functions/methods have corresponding tests
-   - Check if modified logic has test coverage
-   - Do NOT report missing tests for unchanged functions
-   
-   For MODIFIED test files:
-   - Check test quality of changed/added tests only
-   - Do NOT critique pre-existing tests that weren't touched
+   **Priority Areas (in order):**
+   | Priority | Category | Confidence Range | What to Look For |
+   |----------|----------|------------------|------------------|
+   | 1 | Security | 90-95 | SQL injection, XSS, auth bypass, credential exposure, path traversal |
+   | 2 | Bugs | 85-90 | Logic errors that WILL cause runtime failures, unhandled exceptions |
+   | 3 | Data Loss | 85-90 | Operations that could corrupt or lose user data |
+   | 4 | Performance | 80-85 | N+1 queries, unbounded loops, memory leaks |
 
-6. **Guidelines Audit (ONLY on diff lines)**:
+5. **Test Coverage Analysis**:
+   - Find test files: `*.test.ts`, `*.spec.ts`, `__tests__/*.ts`, `tests/*.py`, `test_*.py`
+   - For each MODIFIED source file: check if new/changed functions have tests
+   - For MODIFIED test files: check quality of changed tests only
+   - Identify untested edge cases in new code
+
+6. **Guidelines Compliance**:
    - Check `.kiro/steering/*.md` files for project guidelines
-   - Check ONLY the changed lines against guidelines
-   - Pre-existing guideline violations are out of scope
+   - Validate ONLY changed lines against guidelines
+   - Report violations with exact guideline quotes
 
-7. **Output Results**:
-   - If `--save`: Write to CODE_REVIEW.md
-   - Otherwise: Output to terminal
+## Confidence Scoring System
 
-## Confidence Scoring
+**Rate each finding 0-100. Only report >= 80 confidence.**
 
-Rate each finding 0-100:
+| Score Range | Meaning                       | Action             | Examples                           |
+| ----------- | ----------------------------- | ------------------ | ---------------------------------- |
+| 90-95       | Security vulnerability        | Report immediately | SQL injection, credential exposure |
+| 85-90       | Logic error with clear impact | Report as issue    | Null pointer, array bounds error   |
+| 80-85       | Performance/data issue        | Report as issue    | Memory leak, data corruption risk  |
+| 50-79       | Medium confidence             | Investigate more   | Potential issues needing context   |
+| < 50        | Low confidence                | Do not report      | Style preferences, hypotheticals   |
 
-| Score | Meaning | Action |
-|-------|---------|--------|
-| >= 80 | High confidence | Report as issue |
-| 50-79 | Medium confidence | Investigate more |
-| < 50 | Low confidence | Do not report |
+**Before assigning score, ask:**
 
-**Only report issues with >= 80 confidence.**
+- "Will this actually cause a bug or security vulnerability?"
+- "Do I have enough context to understand why the code is written this way?"
+- "Is this a real problem or just a different coding style?"
+
+## What NOT to Report
+
+- Style preferences (naming, formatting, structure)
+- Hypothetical issues under unlikely conditions
+- Missing error handling for trusted internal code
+- Defensive programming suggestions for internal data
+- Framework lifecycle suggestions without concrete bugs
+- TypeScript/type suggestions unless causing runtime errors
+- "Could be simplified" refactoring suggestions
+- Configuration files for local development
+- Issues in unchanged code that doesn't affect this branch
 
 ## Output Format
 
@@ -92,41 +94,43 @@ Reviewed against `{base-branch}` | {date}
 
 ## Issues
 
-- **[{score}] [{file}:{line}]** Issue description
-  - Why it's a problem and how to fix
+- **[{score}] [{file}:{line}]** Brief description
+  - Why it's a problem and how to fix it
 
 ## Test Coverage
 
 ### Missing Tests (for new/changed code)
-- **[{score}] [{file}]** Description of what needs testing
-  - Suggested test cases
+
+- **[{score}] [{file}]** Missing tests for: function_name
+  - Suggested test cases: scenario_description
 
 ### Test Quality Issues (in changed tests)
+
 - **[{score}] [{test-file}:{line}]** Issue description
   - How to improve the test
 
-## Guideline Compliance
+## Suggestions
 
-- **[{score}] [{file}:{line}]** Guideline violation
-  - **Guideline**: "{exact quote from steering file}"
-  - **Violation**: What the changed code does wrong
-  - **Fix**: How to comply
+- **[{score}] [{file}:{line}]** Genuinely valuable improvement (>= 80 confidence)
+  - How to improve
 
 ## Summary
 
-X files changed | Y issues | Z test findings | W compliance findings
+X files reviewed | Y issues | Z suggestions
+
+### Key Findings
+
+Brief paragraph summarizing the most important findings and overall assessment.
 ```
 
-## What TO Report (even if not in diff)
+## Guidelines
 
-- Hypothetical issues under unlikely conditions (edge cases matter)
-- "Could be simplified" suggestions (cleaner code is better)
-- Pre-existing technical debt that affects this branch (if the branch touches it, flag it)
-
-## What NOT to Report
-
-- **Issues in unchanged code that doesn't affect this branch**
-- Style preferences (naming, formatting, structure)
-- Missing error handling for internal code
-- TypeScript/type suggestions unless it causes runtime error
-- Missing tests for trivial code (getters, simple mappings)
+- **Be conservative**: Only report >= 80 confidence findings
+- **Be specific**: Include file path and line number
+- **Be actionable**: Explain WHY it's a problem AND HOW to fix
+- **Focus on real bugs**: Not coding style or preferences
+- **Provide context**: Read full files when needed to understand intent
+- **Follow patterns**: Check if code follows existing codebase conventions
+- **Verify assumptions**: Don't assume code is wrong without verification
+- **Skip empty sections**: If no issues/suggestions found, omit those sections
+- **Positive feedback**: If changes look good with no issues, say so clearly

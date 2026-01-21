@@ -1,6 +1,6 @@
 # kiro-extras
 
-Custom prompts for Kiro CLI migrated from Claude Code plugins.
+Custom prompts for Kiro CLI with git workflow helpers and specification-driven development.
 
 ## Available Prompts
 
@@ -8,16 +8,16 @@ Custom prompts for Kiro CLI migrated from Claude Code plugins.
 
 Git workflow helper prompts with confidence-scored code review and test coverage analysis.
 
-| Prompt         | Description                                            |
-| -------------- | ------------------------------------------------------ |
-| `git-commit`   | Create commits with ticket ID from branch name         |
-| `git-review`   | Review changes with confidence scoring + test coverage |
-| `git-summary`  | Generate MR description to file                        |
+| Prompt        | Description                                            |
+| ------------- | ------------------------------------------------------ |
+| `git-commit`  | Create commits with ticket ID from branch name         |
+| `git-review`  | Review changes with confidence scoring + test coverage |
+| `git-summary` | Generate MR description to file                        |
 
 **Workflow:**
 
 ```
-git-review --> git-commit --> git-summary
+@git-review --> @git-commit --> @git-summary
 ```
 
 **Branch pattern for commits:** `{prefix}_{TICKET-ID}_{description}`
@@ -42,7 +42,7 @@ Specification-driven development workflow with brownfield support.
 **Workflow:**
 
 ```
-spec-init --> spec-clarify --> spec-plan --> spec-tasks --> spec-implement --> spec-validate --> spec-archive
+@spec-init --> @spec-clarify --> @spec-plan --> @spec-tasks --> @spec-implement --> @spec-validate --> @spec-archive
 ```
 
 ## Installation
@@ -106,14 +106,14 @@ After installation, use prompts directly in Kiro:
 ### git-helpers
 
 ```bash
-git-commit              # Create commit with ticket from branch name
-git-commit -s           # Commit only staged files
+@git-commit              # Create commit with ticket from branch name
+@git-commit -s           # Commit only staged files
 
-git-review              # Review changes + test coverage in terminal
-git-review main         # Compare against main branch
-git-review --save       # Save to CODE_REVIEW.md
+@git-review              # Review changes + test coverage in terminal
+@git-review main         # Compare against main branch
+@git-review --save       # Save to CODE_REVIEW.md
 
-git-summary             # Generate MR_DETAILS.md
+@git-summary             # Generate MR_DETAILS.md
 ```
 
 ### spec-driven
@@ -121,23 +121,23 @@ git-summary             # Generate MR_DETAILS.md
 **Prompts** (all operations):
 
 ```bash
-spec-init add user authentication   # Create specification
-spec-clarify                        # Resolve [NEEDS CLARIFICATION] items
-spec-plan                           # Generate technical plan
-spec-tasks                          # Generate task list
-spec-implement                      # Execute next pending task
-spec-implement T001                 # Execute single task
-spec-implement T001-T005            # Execute task range
-spec-implement --all                # Execute all tasks
-spec-validate                       # Validate implementation
-spec-archive                        # Generate docs and mark as archived
-spec-list                           # List all features by status
+@spec-init add user authentication   # Create specification
+@spec-clarify                        # Resolve [NEEDS CLARIFICATION] items
+@spec-plan                           # Generate technical plan
+@spec-tasks                          # Generate task list
+@spec-implement                      # Execute next pending task
+@spec-implement T001                 # Execute single task
+@spec-implement T001-T005            # Execute task range
+@spec-implement --all                # Execute all tasks
+@spec-validate                       # Validate implementation
+@spec-archive                        # Generate docs and mark as archived
+@spec-list                           # List all features by status
 ```
 
 **Workflow:**
 
 ```
-spec-init --> spec-clarify --> spec-plan --> spec-tasks --> spec-implement --> spec-validate --> spec-archive
+@spec-init --> @spec-clarify --> @spec-plan --> @spec-tasks --> @spec-implement --> @spec-validate --> @spec-archive
 ```
 
 ## MCP Server Configuration
@@ -199,4 +199,4 @@ MIT
 
 ## Credits
 
-Migrated from [claude-code-extras](https://github.com/adeonir/claude-code-extras) plugins.
+Based on [claude-code-extras](https://github.com/adeonir/claude-code-extras) workflows.
