@@ -26,7 +26,7 @@ Git workflow helper prompts with confidence-scored code review and test coverage
 
 - `ab_XYZ-1234_fixSomething` -> `[XYZ-1234] fix something`
 
-### setup
+### steer-tools
 
 Project initialization and steering file management with automatic project analysis.
 
@@ -78,8 +78,8 @@ Specification-driven development workflow with brownfield support.
 
 ```bash
 # Setup module (steering file generation)
-./install/setup.sh
-./install/setup.sh --project
+./install/steer-tools.sh
+./install/steer-tools.sh --project
 
 # Git helpers module
 ./install/git-helpers.sh
@@ -189,12 +189,12 @@ kiro-extras/
         git-cleanup.md
       steering/
         git-helpers.md
-    setup/
+    steer-tools/
       prompts/
         steer-init.md
         steer-analyze.md
       steering/
-        setup.md
+        steer-tools.md
     spec-driven/
       prompts/
         spec-init.md

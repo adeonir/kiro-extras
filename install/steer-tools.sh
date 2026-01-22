@@ -15,10 +15,10 @@ install_global() {
     mkdir -p ~/.kiro/prompts ~/.kiro/steering
 
     # Copy prompts
-    cp "$KIRO_EXTRAS_DIR"/modules/setup/prompts/*.md ~/.kiro/prompts/
+    cp "$KIRO_EXTRAS_DIR"/modules/steer-tools/prompts/*.md ~/.kiro/prompts/
 
     # Copy steering files
-    cp "$KIRO_EXTRAS_DIR"/modules/setup/steering/*.md ~/.kiro/steering/
+    cp "$KIRO_EXTRAS_DIR"/modules/steer-tools/steering/*.md ~/.kiro/steering/
 
     echo "✅ Setup installed globally"
     echo "   Prompts: ~/.kiro/prompts/"
@@ -32,10 +32,10 @@ install_project() {
     mkdir -p .kiro/prompts .kiro/steering
 
     # Copy prompts
-    cp "$KIRO_EXTRAS_DIR"/modules/setup/prompts/*.md .kiro/prompts/
+    cp "$KIRO_EXTRAS_DIR"/modules/steer-tools/prompts/*.md .kiro/prompts/
 
     # Copy steering files
-    cp "$KIRO_EXTRAS_DIR"/modules/setup/steering/*.md .kiro/steering/
+    cp "$KIRO_EXTRAS_DIR"/modules/steer-tools/steering/*.md .kiro/steering/
 
     echo "✅ Setup installed in project"
     echo "   Prompts: .kiro/prompts/"
@@ -46,8 +46,8 @@ show_usage() {
     echo "Usage: $0 [--project]"
     echo ""
     echo "Options:"
-    echo "  (default)  Install setup globally (~/.kiro/)"
-    echo "  --project  Install setup in current project (.kiro/)"
+    echo "  (default)  Install steer-tools globally (~/.kiro/)"
+    echo "  --project  Install steer-tools in current project (.kiro/)"
     echo ""
     echo "Available prompts:"
     echo "  @steer-init    - Analyze project and generate essential steering files"

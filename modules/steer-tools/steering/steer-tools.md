@@ -1,10 +1,10 @@
-# setup
+# steer-tools
 
 Project initialization and steering file management for Kiro CLI following official best practices.
 
 ## Overview
 
-The setup module provides project initialization capabilities that analyze your codebase and generate essential steering files following Kiro.dev best practices for spec-driven development.
+The steer-tools module provides project initialization capabilities that analyze your codebase and generate essential steering files following Kiro.dev best practices for spec-driven development.
 
 ## Prompt
 

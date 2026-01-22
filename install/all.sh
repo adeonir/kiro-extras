@@ -19,7 +19,7 @@ install_all() {
     echo ""
 
     # Install each module
-    "$SCRIPT_DIR/setup.sh" "$scope"
+    "$SCRIPT_DIR/steer-tools.sh" "$scope"
     echo ""
     "$SCRIPT_DIR/git-helpers.sh" "$scope"
     echo ""
@@ -41,7 +41,7 @@ show_usage() {
     echo "Usage: $0 [--project]"
     echo ""
     echo "This script installs all kiro-extras modules:"
-    echo "  - setup: Project initialization and steering file generation"
+    echo "  - steer-tools: Project initialization and steering file generation"
     echo "  - git-helpers: Git workflow automation with code review"
     echo "  - spec-driven: Specification-driven development workflow"
     echo ""
@@ -50,7 +50,7 @@ show_usage() {
     echo "  --project  Install all modules in current project (.kiro/)"
     echo ""
     echo "Individual installation:"
-    echo "  ./install/setup.sh [--project]"
+    echo "  ./install/steer-tools.sh [--project]"
     echo "  ./install/git-helpers.sh [--project]"
     echo "  ./install/spec-driven.sh [--project]"
 }
