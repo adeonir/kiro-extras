@@ -15,13 +15,13 @@ install_global() {
     mkdir -p ~/.kiro/prompts ~/.kiro/steering ~/.kiro/settings
 
     # Copy prompts
-    cp "$KIRO_EXTRAS_DIR"/spec-driven/prompts/*.md ~/.kiro/prompts/
+    cp "$KIRO_EXTRAS_DIR"/modules/spec-driven/prompts/*.md ~/.kiro/prompts/
 
     # Copy steering files
-    cp "$KIRO_EXTRAS_DIR"/spec-driven/steering/*.md ~/.kiro/steering/
+    cp "$KIRO_EXTRAS_DIR"/modules/spec-driven/steering/*.md ~/.kiro/steering/
 
     # Copy MCP settings
-    cp "$KIRO_EXTRAS_DIR"/spec-driven/settings/mcp.json ~/.kiro/settings/
+    cp "$KIRO_EXTRAS_DIR"/modules/spec-driven/settings/mcp.json ~/.kiro/settings/
 
     echo "✅ Spec-driven installed globally"
     echo "   Prompts: ~/.kiro/prompts/"
@@ -36,13 +36,13 @@ install_project() {
     mkdir -p .kiro/prompts .kiro/steering .kiro/settings
 
     # Copy prompts
-    cp "$KIRO_EXTRAS_DIR"/spec-driven/prompts/*.md .kiro/prompts/
+    cp "$KIRO_EXTRAS_DIR"/modules/spec-driven/prompts/*.md .kiro/prompts/
 
     # Copy steering files
-    cp "$KIRO_EXTRAS_DIR"/spec-driven/steering/*.md .kiro/steering/
+    cp "$KIRO_EXTRAS_DIR"/modules/spec-driven/steering/*.md .kiro/steering/
 
     # Copy MCP settings
-    cp "$KIRO_EXTRAS_DIR"/spec-driven/settings/mcp.json .kiro/settings/
+    cp "$KIRO_EXTRAS_DIR"/modules/spec-driven/settings/mcp.json .kiro/settings/
 
     echo "✅ Spec-driven installed in project"
     echo "   Prompts: .kiro/prompts/"

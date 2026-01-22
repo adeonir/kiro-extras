@@ -15,10 +15,10 @@ install_global() {
     mkdir -p ~/.kiro/prompts ~/.kiro/steering
 
     # Copy prompts
-    cp "$KIRO_EXTRAS_DIR"/git-helpers/prompts/*.md ~/.kiro/prompts/
+    cp "$KIRO_EXTRAS_DIR"/modules/git-helpers/prompts/*.md ~/.kiro/prompts/
 
     # Copy steering files
-    cp "$KIRO_EXTRAS_DIR"/git-helpers/steering/*.md ~/.kiro/steering/
+    cp "$KIRO_EXTRAS_DIR"/modules/git-helpers/steering/*.md ~/.kiro/steering/
 
     echo "✅ Git-helpers installed globally"
     echo "   Prompts: ~/.kiro/prompts/"
@@ -32,10 +32,10 @@ install_project() {
     mkdir -p .kiro/prompts .kiro/steering
 
     # Copy prompts
-    cp "$KIRO_EXTRAS_DIR"/git-helpers/prompts/*.md .kiro/prompts/
+    cp "$KIRO_EXTRAS_DIR"/modules/git-helpers/prompts/*.md .kiro/prompts/
 
     # Copy steering files
-    cp "$KIRO_EXTRAS_DIR"/git-helpers/steering/*.md .kiro/steering/
+    cp "$KIRO_EXTRAS_DIR"/modules/git-helpers/steering/*.md .kiro/steering/
 
     echo "✅ Git-helpers installed in project"
     echo "   Prompts: .kiro/prompts/"

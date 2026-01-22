@@ -15,10 +15,10 @@ install_global() {
     mkdir -p ~/.kiro/prompts ~/.kiro/steering
 
     # Copy prompts
-    cp "$KIRO_EXTRAS_DIR"/setup/prompts/*.md ~/.kiro/prompts/
+    cp "$KIRO_EXTRAS_DIR"/modules/setup/prompts/*.md ~/.kiro/prompts/
 
     # Copy steering files
-    cp "$KIRO_EXTRAS_DIR"/setup/steering/*.md ~/.kiro/steering/
+    cp "$KIRO_EXTRAS_DIR"/modules/setup/steering/*.md ~/.kiro/steering/
 
     echo "✅ Setup installed globally"
     echo "   Prompts: ~/.kiro/prompts/"
@@ -32,10 +32,10 @@ install_project() {
     mkdir -p .kiro/prompts .kiro/steering
 
     # Copy prompts
-    cp "$KIRO_EXTRAS_DIR"/setup/prompts/*.md .kiro/prompts/
+    cp "$KIRO_EXTRAS_DIR"/modules/setup/prompts/*.md .kiro/prompts/
 
     # Copy steering files
-    cp "$KIRO_EXTRAS_DIR"/setup/steering/*.md .kiro/steering/
+    cp "$KIRO_EXTRAS_DIR"/modules/setup/steering/*.md .kiro/steering/
 
     echo "✅ Setup installed in project"
     echo "   Prompts: .kiro/prompts/"
