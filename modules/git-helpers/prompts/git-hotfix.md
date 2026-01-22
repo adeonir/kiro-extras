@@ -10,10 +10,12 @@ Create hotfix using git worktree for isolated emergency fixes without disrupting
 ## Process
 
 1. **Validate environment**:
+
    ```bash
    git status --porcelain
    git branch --show-current
    ```
+
    - Warn if current branch has uncommitted changes
    - Show current branch for context
 
@@ -22,20 +24,22 @@ Create hotfix using git worktree for isolated emergency fixes without disrupting
    - Otherwise detect main branch: `git symbolic-ref refs/remotes/origin/HEAD` or fallback to `main`
 
 3. **Create worktree**:
+
    ```bash
    # Generate unique name
    TIMESTAMP=$(date +%Y%m%d-%H%M%S)
    WORKTREE_NAME="hotfix-${TIMESTAMP}"
    WORKTREE_PATH="../${WORKTREE_NAME}"
-   
+
    # Create worktree from source branch
    git worktree add ${WORKTREE_PATH} ${SOURCE_BRANCH}
    ```
 
 4. **Setup hotfix branch**:
+
    ```bash
    cd ${WORKTREE_PATH}
-   
+
    # Create hotfix branch
    HOTFIX_BRANCH="hotfix/${description//[^a-zA-Z0-9]/-}"
    git checkout -b ${HOTFIX_BRANCH}

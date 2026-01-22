@@ -10,13 +10,13 @@ Git workflow helper agents for Kiro CLI.
 
 ## Agents
 
-| Agent | Description |
-|-------|-------------|
-| `@git-commit` | Create commit with ticket ID from branch name |
-| `@git-review` | Review changes with confidence scoring + test coverage |
-| `@git-summary` | Generate MR description to file |
-| `@git-hotfix` | Create emergency hotfix using git worktree |
-| `@git-cleanup` | Clean up merged branches and stale references |
+| Agent          | Description                                            |
+| -------------- | ------------------------------------------------------ |
+| `@git-commit`  | Create commit with ticket ID from branch name          |
+| `@git-review`  | Review changes with confidence scoring + test coverage |
+| `@git-summary` | Generate MR description to file                        |
+| `@git-hotfix`  | Create emergency hotfix using git worktree             |
+| `@git-cleanup` | Clean up merged branches and stale references          |
 
 ### @git-commit
 
@@ -50,6 +50,7 @@ Review code changes for bugs, security issues, test coverage, and steering guide
 ```
 
 **Review areas:**
+
 1. Security vulnerabilities
 2. Bugs and logic errors
 3. Data loss risks
@@ -67,21 +68,26 @@ Generate MR title and description to `MR_DETAILS.md`.
 ```
 
 **Output format:**
+
 ```markdown
 # [TRU-1234] brief description
 
 ## Summary
+
 - User/product perspective (present tense: adds, fixes, improves)
 
 ## Changes
+
 - developer/code perspective (past tense, lowercase)
 
 ## Notes (optional)
+
 Extra context when needed
 
 ## Screenshots (optional)
+
 | Before | After |
-|--------|-------|
+| ------ | ----- |
 ```
 
 ### @git-hotfix
@@ -94,6 +100,7 @@ Create emergency hotfix using git worktree for isolated development.
 ```
 
 **Process:**
+
 1. Creates worktree in `../hotfix-{timestamp}`
 2. Creates hotfix branch: `hotfix/{description}`
 3. Preserves current work in main directory
@@ -111,6 +118,7 @@ Clean up merged branches and stale references.
 ```
 
 **Safety features:**
+
 - Only deletes fully merged branches
 - Protects main, master, develop, current branch
 - Shows detailed summary before deletion
@@ -118,21 +126,23 @@ Clean up merged branches and stale references.
 
 ## Confidence Scoring
 
-| Score | Meaning | Action |
-|-------|---------|--------|
-| >= 80 | High confidence | Report as issue |
+| Score | Meaning           | Action           |
+| ----- | ----------------- | ---------------- |
+| >= 80 | High confidence   | Report as issue  |
 | 50-79 | Medium confidence | Investigate more |
-| < 50 | Low confidence | Do not report |
+| < 50  | Low confidence    | Do not report    |
 
 ## Test Coverage Analysis
 
 The `@git-review` agent checks:
+
 - Missing tests for new functions/methods
 - Broken tests from code changes
 - Test quality issues
 - Untested edge cases
 
 Test file patterns:
+
 - `*.test.ts`, `*.spec.ts`
 - `__tests__/*.ts`
 - `tests/*.py`, `test_*.py`

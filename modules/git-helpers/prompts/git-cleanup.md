@@ -11,6 +11,7 @@ Clean up merged branches and stale references to keep repository organized.
 ## Process
 
 1. **Gather repository state**:
+
    ```bash
    git branch --show-current
    git fetch --prune
@@ -29,16 +30,17 @@ Clean up merged branches and stale references to keep repository organized.
    - Any branch matching pattern: `release/*`, `hotfix/*`
 
 4. **Show cleanup summary**:
+
    ```
    📋 Branches to clean up:
-   
+
    Local merged branches:
    ✓ feature/old-feature (merged 5 days ago)
    ✓ bugfix/minor-fix (merged 2 days ago)
-   
+
    Remote tracking branches: (if --remote used)
    ✓ origin/feature/completed-task (merged 1 week ago)
-   
+
    Protected (will skip):
    🛡️ main (protected)
    🛡️ develop (protected)
@@ -53,18 +55,21 @@ Clean up merged branches and stale references to keep repository organized.
 ## Cleanup Actions
 
 ### Local Branches
+
 ```bash
 # For each merged branch (excluding protected)
 git branch -d ${BRANCH_NAME}
 ```
 
 ### Remote Tracking Branches (if --remote)
+
 ```bash
 # For each stale remote tracking branch
 git branch -dr ${REMOTE_BRANCH}
 ```
 
 ### Additional Cleanup
+
 ```bash
 # Remove stale remote references (already done by fetch --prune)
 git remote prune origin
@@ -77,12 +82,13 @@ git gc --prune=30.days.ago
 ## Output Format
 
 ### Dry Run
+
 ```
 🧹 Git Cleanup (DRY RUN)
 
 Would delete 3 local branches:
   - feature/old-feature (merged 5 days ago)
-  - bugfix/minor-fix (merged 2 days ago)  
+  - bugfix/minor-fix (merged 2 days ago)
   - task/completed-item (merged 1 week ago)
 
 Would delete 2 remote tracking branches:
@@ -95,6 +101,7 @@ Run without --dry-run to execute cleanup.
 ```
 
 ### Actual Cleanup
+
 ```
 🧹 Git Cleanup Complete
 
