@@ -64,53 +64,30 @@ Specification-driven development workflow with brownfield support.
 
 ## Installation
 
-### Option 1: Global Installation (All Projects)
-
-Copy prompts to your global Kiro directory:
+### Option 1: Install All Modules
 
 ```bash
-# Create directories if they don't exist
-mkdir -p ~/.kiro/prompts ~/.kiro/steering
+# Global installation (default)
+./install/all.sh
 
-# Copy git-helpers prompts
-cp git-helpers/prompts/*.md ~/.kiro/prompts/
-
-# Copy spec-driven prompts
-cp spec-driven/prompts/*.md ~/.kiro/prompts/
-
-# Copy steering prompts
-cp setup/prompts/*.md ~/.kiro/prompts/
-
-# Copy steering files (recommended for centralized docs)
-cp git-helpers/steering/*.md ~/.kiro/steering/
-cp spec-driven/steering/*.md ~/.kiro/steering/
-cp setup/steering/*.md ~/.kiro/steering/
+# Project-level installation
+./install/all.sh --project
 ```
 
-### Option 2: Project-Level Installation
-
-Copy to your project's `.kiro` directory:
+### Option 2: Install Individual Modules
 
 ```bash
-# In your project root
-mkdir -p .kiro/prompts .kiro/steering .kiro/settings
+# Setup module (steering file generation)
+./install/setup.sh
+./install/setup.sh --project
 
-# Copy git-helpers prompts
-cp /path/to/kiro-extras/git-helpers/prompts/*.md .kiro/prompts/
+# Git helpers module
+./install/git-helpers.sh
+./install/git-helpers.sh --project
 
-# Copy spec-driven prompts
-cp /path/to/kiro-extras/spec-driven/prompts/*.md .kiro/prompts/
-
-# Copy steering prompts
-cp /path/to/kiro-extras/setup/prompts/*.md .kiro/prompts/
-
-# Copy steering files
-cp /path/to/kiro-extras/git-helpers/steering/*.md .kiro/steering/
-cp /path/to/kiro-extras/spec-driven/steering/*.md .kiro/steering/
-cp /path/to/kiro-extras/setup/steering/*.md .kiro/steering/
-
-# Copy MCP config (for spec-driven with Serena)
-cp /path/to/kiro-extras/spec-driven/settings/mcp.json .kiro/settings/
+# Spec-driven module
+./install/spec-driven.sh
+./install/spec-driven.sh --project
 ```
 
 ## Requirements
