@@ -53,12 +53,12 @@ Create hotfix using git worktree for isolated emergency fixes without disrupting
 ## Output Format
 
 ```
-🔥 Hotfix worktree created:
+Hotfix worktree created:
    Location: ../hotfix-20250121-190033
    Branch: hotfix/fix-critical-bug
    Source: main
 
-📝 Next steps:
+Next steps:
    1. cd ../hotfix-20250121-190033
    2. Make your hotfix changes
    3. git add . && git commit -m "hotfix: fix critical bug"
@@ -66,7 +66,7 @@ Create hotfix using git worktree for isolated emergency fixes without disrupting
    5. Create MR in GitLab
    6. After merge, run: git worktree remove ../hotfix-20250121-190033
 
-💡 Your current work in the main directory remains untouched.
+Your current work in the main directory remains untouched.
 ```
 
 ## Cleanup Instructions

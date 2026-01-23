@@ -178,25 +178,25 @@ Cargo.toml [dev-dependencies]
 ## Output Format
 
 ```
-🎯 Steering Initialization Complete
+Steering Initialization Complete
 
-📊 Project Analysis:
+Project Analysis:
    Type: React TypeScript Web Application
    Stack: React 18, TypeScript, Tailwind CSS, Vite
    Architecture: Component-based with custom hooks
    Testing: Jest + React Testing Library
 
-📁 Generated Steering Files:
-   ✓ .kiro/steering/product.md - Product context and user personas
-   ✓ .kiro/steering/tech.md - Technical architecture and standards
-   ✓ .kiro/steering/structure.md - Code organization patterns
+Generated Steering Files:
+   .kiro/steering/product.md - Product context and user personas
+   .kiro/steering/tech.md - Technical architecture and standards
+   .kiro/steering/structure.md - Code organization patterns
 
-🚀 Next Steps:
+Next Steps:
    1. Review and customize generated steering files
    2. Run @spec-init to create your first feature specification
    3. Use @git-review to establish code quality baselines
 
-💡 Pro Tip: Steering files provide context for all Kiro agents.
+Pro Tip: Steering files provide context for all Kiro agents.
    Update them as your project evolves to maintain AI accuracy.
 ```
 

@@ -107,12 +107,12 @@ Create commits with ticket ID extracted from branch name following project conve
 
 **Imperative Mood Examples**:
 
-- ✅ "add user authentication"
-- ✅ "fix payment validation"
-- ✅ "update API documentation"
-- ❌ "added user authentication"
-- ❌ "fixing payment validation"
-- ❌ "updating API documentation"
+- Good: "add user authentication"
+- Good: "fix payment validation"
+- Good: "update API documentation"
+- Bad: "added user authentication"
+- Bad: "fixing payment validation"
+- Bad: "updating API documentation"
 
 ## Branch Pattern Examples
 

@@ -222,33 +222,33 @@ find . -name "*.test.*" -o -name "*.spec.*" | head -5
 ## Output Format
 
 ```
-🔍 Deep Project Analysis Complete
+Deep Project Analysis Complete
 
-📊 Detected Patterns:
+Detected Patterns:
    Framework: React 18 with TypeScript
    Architecture: Component-based with custom hooks
    State: Zustand + React Query
    Styling: Tailwind CSS with component variants
    Testing: Jest + React Testing Library + Playwright
 
-📁 Generated Specific Steering Files:
-   ✓ .kiro/steering/react-patterns.md - Component and hook conventions
-   ✓ .kiro/steering/api-integration.md - Data fetching and error handling
-   ✓ .kiro/steering/testing-strategy.md - Test organization and patterns
-   ✓ .kiro/steering/styling-conventions.md - Tailwind and component styling
+Generated Specific Steering Files:
+   .kiro/steering/react-patterns.md - Component and hook conventions
+   .kiro/steering/api-integration.md - Data fetching and error handling
+   .kiro/steering/testing-strategy.md - Test organization and patterns
+   .kiro/steering/styling-conventions.md - Tailwind and component styling
 
-🎯 Key Insights:
+Key Insights:
    • Custom hook pattern: useApi, useAuth, useLocalStorage
    • Error boundary implementation for component isolation
    • Consistent API response handling with custom types
    • Page-level component organization with shared layouts
 
-🚀 Next Steps:
+Next Steps:
    1. Review generated steering files for accuracy
    2. Customize patterns to match team preferences
    3. Use @spec-init with enhanced project context
 
-💡 Pro Tip: Run @steer-analyze --update periodically as your
+Pro Tip: Run @steer-analyze --update periodically as your
    codebase evolves to keep steering files current.
 ```
 

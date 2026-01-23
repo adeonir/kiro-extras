@@ -61,9 +61,17 @@ User may specify:
 
    **Changes Section** (Developer/Technical Perspective):
    - Past tense, lowercase: added, refactored, updated
+   - Organize by area/component when multiple areas affected (GraphQL, State Management, API, Tests, etc.)
+   - Use simple list for single-area changes
    - Technical implementation details
    - File-level and architectural changes
    - Code structure modifications
+
+   **Technical Details Section** (Optional):
+   - Implementation notes and architectural decisions
+   - Performance considerations
+   - Design patterns used
+   - Important technical context
 
    **Notes Section** (Optional):
    - Breaking changes or migration requirements
@@ -92,6 +100,26 @@ User may specify:
    - technical change 1 (past tense, lowercase)
    - technical change 2 (past tense, lowercase)
    - architectural or structural modifications
+
+   OR (when multiple areas affected):
+
+   **Component/Area Name**
+
+   - technical change 1 (past tense, lowercase)
+   - technical change 2 (past tense, lowercase)
+
+   **Another Component/Area**
+
+   - architectural or structural modifications
+   - file-level changes with context
+
+   ## Technical Details
+
+   > Only include if implementation notes needed
+
+   - Implementation approach and architectural decisions
+   - Performance considerations or optimizations
+   - Design patterns or technical context
 
    ## Notes
 
@@ -134,22 +162,38 @@ User may specify:
 - **Business impact**: Why this change matters
 - **Problem-solution**: What issue this resolves
 - **Examples**:
-  - ✅ "Adds two-factor authentication to improve account security"
-  - ✅ "Fixes payment flow to prevent transaction failures"
-  - ✅ "Improves dashboard loading speed by 60%"
-  - ❌ "Updated AuthService.ts and added middleware"
+  - "Adds two-factor authentication to improve account security"
+  - "Fixes payment flow to prevent transaction failures"
+  - "Improves dashboard loading speed by 60%"
+  - "Updated AuthService.ts and added middleware"
 
 ### Changes Section (Technical Details)
 
 - **Past tense, lowercase**: "added", "refactored", "updated"
+- **Organization**: Use simple list for single-area changes; group by component/area when multiple areas affected
 - **Technical specifics**: Implementation details
 - **File/architecture changes**: What was built or modified
 - **Code structure**: How the solution was implemented
+- **Examples (simple)**:
+  - "added JWT token validation middleware"
+  - "refactored user service to use repository pattern"
+  - "updated database schema for user preferences"
+- **Examples (grouped)**:
+  - **Authentication**: "added JWT token validation middleware"
+  - **User Service**: "refactored user service to use repository pattern"
+  - **Database**: "updated schema for user preferences"
+  - **Performance**: "implemented caching layer for dashboard queries"
+
+### Technical Details Section (Optional)
+
+- **Implementation notes**: Architectural decisions and approach
+- **Performance considerations**: Optimizations or trade-offs
+- **Design patterns**: Patterns used and why
+- **Technical context**: Important background for reviewers
 - **Examples**:
-  - ✅ "added JWT token validation middleware"
-  - ✅ "refactored user service to use repository pattern"
-  - ✅ "updated database schema for user preferences"
-  - ✅ "implemented caching layer for dashboard queries"
+  - "Application ID is fetched once during initialization, avoiding repeated calls"
+  - "Uses optional chaining to safely handle empty arrays"
+  - "Validates application ID exists before making requests"
 
 ## Change Detection Patterns
 
@@ -185,13 +229,13 @@ User may specify:
 
 **Before writing MR_DETAILS.md**:
 
-- ✅ All significant changes covered in Changes section
-- ✅ Summary clearly explains user/business value
-- ✅ Title is concise and under 72 characters
-- ✅ Technical details match actual code changes
-- ✅ Ticket ID format is correct (if present)
-- ✅ File paths and function names are accurate
-- ✅ Appropriate sections included (skip empty ones)
+- All significant changes covered in Changes section
+- Summary clearly explains user/business value
+- Title is concise and under 72 characters
+- Technical details match actual code changes
+- Ticket ID format is correct (if present)
+- File paths and function names are accurate
+- Appropriate sections included (skip empty ones)
 
 **After writing**:
 

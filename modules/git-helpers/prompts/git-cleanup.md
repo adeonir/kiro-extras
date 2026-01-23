@@ -32,19 +32,19 @@ Clean up merged branches and stale references to keep repository organized.
 4. **Show cleanup summary**:
 
    ```
-   📋 Branches to clean up:
+   Branches to clean up:
 
    Local merged branches:
-   ✓ feature/old-feature (merged 5 days ago)
-   ✓ bugfix/minor-fix (merged 2 days ago)
+   feature/old-feature (merged 5 days ago)
+   bugfix/minor-fix (merged 2 days ago)
 
    Remote tracking branches: (if --remote used)
-   ✓ origin/feature/completed-task (merged 1 week ago)
+   origin/feature/completed-task (merged 1 week ago)
 
    Protected (will skip):
-   🛡️ main (protected)
-   🛡️ develop (protected)
-   🛡️ feature/current-work (current branch)
+   main (protected)
+   develop (protected)
+   feature/current-work (current branch)
    ```
 
 5. **Confirmation and cleanup**:
@@ -84,7 +84,7 @@ git gc --prune=30.days.ago
 ### Dry Run
 
 ```
-🧹 Git Cleanup (DRY RUN)
+Git Cleanup (DRY RUN)
 
 Would delete 3 local branches:
   - feature/old-feature (merged 5 days ago)
@@ -103,18 +103,18 @@ Run without --dry-run to execute cleanup.
 ### Actual Cleanup
 
 ```
-🧹 Git Cleanup Complete
+Git Cleanup Complete
 
-✅ Deleted 3 local branches:
-  ✓ feature/old-feature
-  ✓ bugfix/minor-fix
-  ✓ task/completed-item
+Deleted 3 local branches:
+  - feature/old-feature
+  - bugfix/minor-fix
+  - task/completed-item
 
-✅ Deleted 2 remote tracking branches:
-  ✓ origin/feature/done-task
-  ✓ origin/bugfix/resolved
+Deleted 2 remote tracking branches:
+  - origin/feature/done-task
+  - origin/bugfix/resolved
 
-🛡️ Protected 3 branches: main, develop, feature/current-work
+Protected 3 branches: main, develop, feature/current-work
 
 Repository cleaned up successfully!
 ```

@@ -65,39 +65,39 @@ Check which artifacts exist in `.specs/{ID}-{feature}/`:
 
 ### Frontmatter Validation
 
-- ✅ Valid YAML frontmatter present
-- ✅ Required fields: `id`, `feature`, `type`, `status`, `created`
-- ✅ ID is numeric and matches directory name
-- ✅ Feature name is kebab-case
-- ✅ Type is either `greenfield` or `brownfield`
-- ✅ Status is valid workflow state
-- ✅ Created date is valid YYYY-MM-DD format
+- Valid YAML frontmatter present
+- Required fields: `id`, `feature`, `type`, `status`, `created`
+- ID is numeric and matches directory name
+- Feature name is kebab-case
+- Type is either `greenfield` or `brownfield`
+- Status is valid workflow state
+- Created date is valid YYYY-MM-DD format
 
 ### Content Structure Validation
 
-- ✅ Contains `## Overview` section with meaningful description
-- ✅ Contains `## Functional Requirements` section
-- ✅ Contains `## Acceptance Criteria` section
-- ✅ FR-xxx items are properly numbered and sequential
-- ✅ AC-xxx items are properly numbered and sequential
-- ✅ Requirements are specific and testable
-- ✅ Acceptance criteria are measurable
+- Contains `## Overview` section with meaningful description
+- Contains `## Functional Requirements` section
+- Contains `## Acceptance Criteria` section
+- FR-xxx items are properly numbered and sequential
+- AC-xxx items are properly numbered and sequential
+- Requirements are specific and testable
+- Acceptance criteria are measurable
 
 ### Type-Specific Validation
 
 **For Brownfield Features:**
 
-- ✅ Contains `## Baseline Analysis` section
-- ✅ Baseline includes current implementation details
-- ✅ Baseline includes modification points
-- ✅ Baseline references specific files and functions
+- Contains `## Baseline Analysis` section
+- Baseline includes current implementation details
+- Baseline includes modification points
+- Baseline references specific files and functions
 
 ### Quality Checks
 
-- ✅ No empty sections or placeholder text
-- ✅ Requirements are clear and unambiguous
-- ✅ Acceptance criteria are testable
-- ✅ Technical considerations are documented
+- No empty sections or placeholder text
+- Requirements are clear and unambiguous
+- Acceptance criteria are testable
+- Technical considerations are documented
 
 ### Ambiguity Detection
 
@@ -113,41 +113,41 @@ Check which artifacts exist in `.specs/{ID}-{feature}/`:
 
 ### Plan Structure Validation
 
-- ✅ Contains `## Context` with feature reference
-- ✅ Contains `## Critical Files` section with tables
-- ✅ Contains `## Architecture Decision` section
-- ✅ Contains `## Component Design` section
-- ✅ Contains `## Requirements Traceability` section
+- Contains `## Context` with feature reference
+- Contains `## Critical Files` section with tables
+- Contains `## Architecture Decision` section
+- Contains `## Component Design` section
+- Contains `## Requirements Traceability` section
 
 ### Documentation Compliance
 
-- ✅ All referenced documentation files actually exist
-- ✅ Implementation decisions supported by evidence
-- ✅ Patterns match existing codebase conventions
-- ✅ Data formats align with documented examples
-- ✅ No `[NOT DOCUMENTED - needs verification]` markers remain
+- All referenced documentation files actually exist
+- Implementation decisions supported by evidence
+- Patterns match existing codebase conventions
+- Data formats align with documented examples
+- No `[NOT DOCUMENTED - needs verification]` markers remain
 
 ### Requirements Coverage
 
-- ✅ Every FR-xxx from spec.md appears in traceability table
-- ✅ Each requirement mapped to specific components
-- ✅ Each component has clear file path and responsibility
-- ✅ No requirements left unmapped
+- Every FR-xxx from spec.md appears in traceability table
+- Each requirement mapped to specific components
+- Each component has clear file path and responsibility
+- No requirements left unmapped
 
 ### Architecture Validation
 
-- ✅ Single, decisive approach chosen (no multiple options)
-- ✅ Component responsibilities are clear and non-overlapping
-- ✅ Data flow is documented end-to-end
-- ✅ Integration points are identified
-- ✅ Error handling approach is defined
+- Single, decisive approach chosen (no multiple options)
+- Component responsibilities are clear and non-overlapping
+- Data flow is documented end-to-end
+- Integration points are identified
+- Error handling approach is defined
 
 ### Critical Files Validation
 
-- ✅ Reference files exist and contain relevant patterns
-- ✅ Files to modify exist and are appropriate targets
-- ✅ Files to create have clear purposes and locations
-- ✅ No circular dependencies in file relationships
+- Reference files exist and contain relevant patterns
+- Files to modify exist and are appropriate targets
+- Files to create have clear purposes and locations
+- No circular dependencies in file relationships
 
 ---
 
@@ -157,38 +157,38 @@ Check which artifacts exist in `.specs/{ID}-{feature}/`:
 
 ### Task Structure Validation
 
-- ✅ Tasks have sequential IDs (T001, T002, etc.)
-- ✅ Tasks are properly categorized
-- ✅ Dependency markers are valid (`[P]`, `[B:T001]`, `[B:T001,T002]`)
-- ✅ No circular dependencies in task chain
+- Tasks have sequential IDs (T001, T002, etc.)
+- Tasks are properly categorized
+- Dependency markers are valid (`[P]`, `[B:T001]`, `[B:T001,T002]`)
+- No circular dependencies in task chain
 
 ### Requirements Coverage Validation
 
-- ✅ Every FR-xxx from spec.md covered by implementation tasks
-- ✅ Every AC-xxx from spec.md covered by validation tasks
-- ✅ Requirements coverage table is complete and accurate
-- ✅ Each task references specific requirements it addresses
+- Every FR-xxx from spec.md covered by implementation tasks
+- Every AC-xxx from spec.md covered by validation tasks
+- Requirements coverage table is complete and accurate
+- Each task references specific requirements it addresses
 
 ### Task Quality Validation
 
-- ✅ Tasks are atomic and actionable
-- ✅ Tasks include specific file paths and actions
-- ✅ Tasks have clear success criteria
-- ✅ Tasks are appropriately scoped
+- Tasks are atomic and actionable
+- Tasks include specific file paths and actions
+- Tasks have clear success criteria
+- Tasks are appropriately scoped
 
 ### Dependency Logic Validation
 
-- ✅ Parallel tasks (`[P]`) are truly independent
-- ✅ Blocking dependencies (`[B:Txxx]`) are logical
-- ✅ No tasks blocked by non-existent tasks
-- ✅ Execution order makes architectural sense
+- Parallel tasks (`[P]`) are truly independent
+- Blocking dependencies (`[B:Txxx]`) are logical
+- No tasks blocked by non-existent tasks
+- Execution order makes architectural sense
 
 ### Quality Gate Integration
 
-- ✅ Quality gate tasks included at appropriate points
-- ✅ Commands reference actual package.json scripts
-- ✅ Testing tasks cover all new functionality
-- ✅ Documentation tasks address all public interfaces
+- Quality gate tasks included at appropriate points
+- Commands reference actual package.json scripts
+- Testing tasks cover all new functionality
+- Documentation tasks address all public interfaces
 
 ---
 
@@ -198,10 +198,10 @@ Check which artifacts exist in `.specs/{ID}-{feature}/`:
 
 ### Implementation Progress Validation
 
-- ✅ Task completion status accurately reflects implementation
-- ✅ All completed tasks have corresponding code changes
-- ✅ No tasks marked complete without implementation
-- ✅ Feature status matches implementation progress
+- Task completion status accurately reflects implementation
+- All completed tasks have corresponding code changes
+- No tasks marked complete without implementation
+- Feature status matches implementation progress
 
 ### Acceptance Criteria Validation
 
@@ -214,38 +214,38 @@ For each AC-xxx from spec.md:
 
 ### Code Quality Validation
 
-- ✅ Implementation follows patterns from reference files
-- ✅ Code style matches existing codebase conventions
-- ✅ Error handling follows established patterns
-- ✅ Logging and monitoring are appropriately implemented
+- Implementation follows patterns from reference files
+- Code style matches existing codebase conventions
+- Error handling follows established patterns
+- Logging and monitoring are appropriately implemented
 
 ### Requirements Validation
 
-- ✅ Each completed FR-xxx requirement is demonstrably implemented
-- ✅ Implementation matches specification requirements
-- ✅ Edge cases and error scenarios are handled
-- ✅ Integration points work as planned
+- Each completed FR-xxx requirement is demonstrably implemented
+- Implementation matches specification requirements
+- Edge cases and error scenarios are handled
+- Integration points work as planned
 
 ### Testing Validation
 
-- ✅ Unit tests exist for all new functions/methods
-- ✅ Integration tests cover external dependencies
-- ✅ Test coverage meets project standards
-- ✅ Tests are well-structured and maintainable
+- Unit tests exist for all new functions/methods
+- Integration tests cover external dependencies
+- Test coverage meets project standards
+- Tests are well-structured and maintainable
 
 ### Architecture Compliance
 
-- ✅ Implementation follows planned architecture
-- ✅ Components have expected responsibilities
-- ✅ Data flow matches planned design
-- ✅ Integration points work as specified
+- Implementation follows planned architecture
+- Components have expected responsibilities
+- Data flow matches planned design
+- Integration points work as specified
 
 ### Quality Gate Validation
 
-- ✅ Linting passes without errors
-- ✅ Type checking passes without errors
-- ✅ All tests pass
-- ✅ Build succeeds without warnings
+- Linting passes without errors
+- Type checking passes without errors
+- All tests pass
+- Build succeeds without warnings
 
 ---
 
@@ -263,13 +263,13 @@ Create comprehensive validation report:
 - **Feature**: {ID}-{feature}
 - **Artifacts Validated**: {list_of_files}
 - **Checks Performed**: {total_checks}
-- **Passed**: {passed_count} ✅
-- **Failed**: {failed_count} ❌
-- **Warnings**: {warning_count} ⚠️
+- **Passed**: {passed_count}
+- **Failed**: {failed_count}
+- **Warnings**: {warning_count}
 
 ## Validation Results
 
-### ✅ Passed Checks
+### Passed Checks
 
 - Specification structure is valid and complete
 - All functional requirements are properly numbered
@@ -277,14 +277,14 @@ Create comprehensive validation report:
 - Task dependencies are logical and non-circular
 - {other_passed_checks}
 
-### ❌ Failed Checks
+### Failed Checks
 
 - Missing acceptance criteria for FR-003
 - Task T005 has circular dependency with T007
 - AC-002 is not yet implemented
 - {other_failed_checks}
 
-### ⚠️ Warnings
+### Warnings
 
 - FR-001 acceptance criteria could be more specific
 - Task T008 might be too large for single session
@@ -295,17 +295,17 @@ Create comprehensive validation report:
 
 | Criterion                   | Status       | Implementation              | Notes                    |
 | --------------------------- | ------------ | --------------------------- | ------------------------ |
-| AC-001: User can login      | ✅ Satisfied | LoginService.authenticate() | Tests passing            |
-| AC-002: Password validation | ⚠️ Partial   | Basic validation only       | Missing complexity rules |
-| AC-003: Session management  | ❌ Missing   | Not implemented             | Planned for T009         |
+| AC-001: User can login      | Satisfied | LoginService.authenticate() | Tests passing            |
+| AC-002: Password validation | Partial   | Basic validation only       | Missing complexity rules |
+| AC-003: Session management  | Missing   | Not implemented             | Planned for T009         |
 
 ## Requirements Coverage (Tasks/Full Mode)
 
 | Requirement              | Implementation Tasks | Validation Tasks | Status         |
 | ------------------------ | -------------------- | ---------------- | -------------- |
-| FR-001: Authentication   | T003, T004           | T007             | ✅ Complete    |
-| FR-002: Authorization    | T005                 | T008             | ⚠️ In Progress |
-| FR-003: Session handling | T006                 | T009             | ❌ Pending     |
+| FR-001: Authentication   | T003, T004           | T007             | Complete    |
+| FR-002: Authorization    | T005                 | T008             | In Progress |
+| FR-003: Session handling | T006                 | T009             | Pending     |
 
 ## Code Quality Issues (Full Mode Only)
 
@@ -357,27 +357,27 @@ Create comprehensive validation report:
 
 **After Spec Validation:**
 
-- ✅ **If valid**: Ready for `@spec-plan`
-- ❌ **If clarifications needed**: Run `@spec-clarify`
-- ⚠️ **If warnings**: Consider improvements, then proceed
+- **If valid**: Ready for `@spec-plan`
+- **If clarifications needed**: Run `@spec-clarify`
+- **If warnings**: Consider improvements, then proceed
 
 **After Plan Validation:**
 
-- ✅ **If valid**: Ready for `@spec-tasks`
-- ❌ **If issues found**: Fix plan inconsistencies and re-validate
-- ⚠️ **If documentation gaps**: Update plan with missing evidence
+- **If valid**: Ready for `@spec-tasks`
+- **If issues found**: Fix plan inconsistencies and re-validate
+- **If documentation gaps**: Update plan with missing evidence
 
 **After Tasks Validation:**
 
-- ✅ **If valid**: Ready for `@spec-implement`
-- ❌ **If coverage gaps**: Update tasks to cover all requirements
-- ⚠️ **If dependency issues**: Resolve circular or illogical dependencies
+- **If valid**: Ready for `@spec-implement`
+- **If coverage gaps**: Update tasks to cover all requirements
+- **If dependency issues**: Resolve circular or illogical dependencies
 
 **After Full Validation:**
 
-- ✅ **If complete**: Update status to `done`, ready for `@spec-archive`
-- ❌ **If implementation gaps**: Continue with `@spec-implement`
-- ⚠️ **If partial**: Address critical issues, then continue implementation
+- **If complete**: Update status to `done`, ready for `@spec-archive`
+- **If implementation gaps**: Continue with `@spec-implement`
+- **If partial**: Address critical issues, then continue implementation
 
 ### Step 7: Update Feature Status
 
